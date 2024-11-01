@@ -6,7 +6,7 @@
 
 #### Directory Structure ####
 
-Databases Midterm/
+Databases-Networks-and-the-Web-Midterm-University-of-London/
 ├── middleware/
 │   ├── auth.js
 │   └── setUser.js
