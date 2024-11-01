@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- Add a favicon for the website to avoid 404 error message -->
+    <link rel="shortcut icon" href="#">
+
+    <!-- Loading CSS -->
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+</head>
+ <body>
+  <!-- ----------------------------------navbar------------------------------------------ -->
+  <nav class="navbar">
+    <h1>Login</h1>
+    <!-- ----------navbar Links----------- -->
+    <ul>
+      <li><a href="/">Main Home</a></li>
+      <li class="active">Author Home Page</li>
+    </ul>
+  </nav>
+    <!-- ----------------------------------login form------------------------------------------ -->
+    <div class="login-form">
+      <form action="/auth/login" method="post">
+          <label>Email:</label>
+          <input type="email" name="email" required>
+          <label>Password:</label>
+          <input type="password" name="password" required>
+          <button type="submit">Login</button>
+      </form>
+    <!-- ----------Login error----------- -->  
+    <% if (errors && errors.length > 0) { %>
+      <ul id="loginError-text">
+        <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+    <!-- ----------Other Login options----------- --> 
+   <p>Don't have an account? <a href="/auth/register">Register here</a> </p>
+   <p>Or</p>
+    <a href="/auth/google">Login with Google</a>
+    </div>
+ </body>
+</html>

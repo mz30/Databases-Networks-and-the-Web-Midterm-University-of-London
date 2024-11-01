@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <!-- Add a favicon for the website to avoid 404 error message -->
+    <link rel="shortcut icon" href="#">
+
+    <!-- Loading CSS -->
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+</head>
+<body>
+  <!-- ----------------------------------navbar------------------------------------------ -->
+  <nav class="navbar">
+    <h1>Register</h1>
+  </nav>
+  <!-- ----------------------------------register form------------------------------------------ -->
+    <div class="register-form">
+      <h2>Register and then login</h2>
+    <form action="/auth/register" method="post">
+        <label>User Name:</label>
+        <input type="text" name="user_name" required>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Register</button>
+    </form>
+    <!-- ----------Register error----------- --> 
+    <% if (errors && errors.length > 0) { %>
+      <ul id="registerError-text">
+        <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+    <!-- ----------Link to back to login----------- -->
+    <p>Back to <a href="/auth/login">Login</a></p>
+  </div>
+</body>
+</html>

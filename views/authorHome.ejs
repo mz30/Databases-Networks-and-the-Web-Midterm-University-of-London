@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Home</title>
+
+    <!-- Add a favicon for the website to avoid 404 error message -->
+    <link rel="shortcut icon" href="#">
+
+    <!-- Loading CSS -->
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <!-- Loading Javascript -->
+    <script src="/confirm.js" defer></script>
+</head>
+<body>
+    <!-- ----------------------------------navbar------------------------------------------ -->
+    <nav class="navbar">
+        <h1><%= blogTitle %></h1>
+        <!-- ----------navbar Links----------- -->
+        <ul>
+            <li><a href="/">Main Home</a></li>
+            <li class="active">Author Home</li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <!-- ----------------------------------Blog------------------------------------------ -->   
+    <div class="main-blog-articles">
+        <div class="blog-articles">
+            <h4>Published Articles</h4>
+            <ul>
+                <% publishedArticles.forEach(article => { %>
+                <li class="published-articles">
+                    <a href="/reader/article/<%= article.article_id %>">View <%= article.title %></a> by <%= authorName %>
+                    <p>Created at: <%= moment.utc(article.created_at).tz(TIMEZONE).format('YYYY-MM-DD HH:mm:ss') %> PKT</p>
+                    <p>Last modified at: <%= moment.utc(article.updated_at).tz(TIMEZONE).format('YYYY-MM-DD HH:mm:ss') %> PKT</p>
+                    <p>Published at: <%= moment.utc(article.published_at).tz(TIMEZONE).format('YYYY-MM-DD HH:mm:ss') %> PKT</p>
+                    <form id="delete-published-<%= article.article_id %>" action="/author/delete/<%= article.article_id %>" method="post">
+                        <button type="button" class="delete-published-button" data-form-id="delete-published-<%= article.article_id %>">Delete</button>
+                    </form>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+        <div class="blog-articles line-between-publish-and-draft">
+            <h4>Draft Articles</h4>
+            <ul>
+                <% draftArticles.forEach(article => { %>
+                <li class="draft-articles">
+                    <a href="/author/edit/<%= article.article_id %>">Click to Edit <%= article.title %></a> by <%= authorName %>
+                    <p>Created at: <%= moment.utc(article.created_at).tz(TIMEZONE).format('YYYY-MM-DD HH:mm:ss') %> PKT</p>
+                    <p>Last modified at: <%= moment.utc(article.updated_at).tz(TIMEZONE).format('YYYY-MM-DD HH:mm:ss') %> PKT</p>
+                    <form id="publish-draft-<%= article.article_id %>" action="/author/publish/<%= article.article_id %>" method="post">
+                        <button type="button" class="publish-button" data-form-id="publish-draft-<%= article.article_id %>">Publish</button>
+                    </form>
+                    <% if (publishMessage) { %>
+                    <p class="publish-message"><%= publishMessage %></p>
+                    <% }; %> 
+                    <form id="delete-draft-<%= article.article_id %>" action="/author/delete/<%= article.article_id %>" method="post">
+                        <button type="button" class="delete-draft-button" data-form-id="delete-draft-<%= article.article_id %>">Delete</button>
+                    </form>
+                </li>
+                <% }) %>
+            </ul>
+            <form action="/author/create-draft" method="post">
+                <button type="submit">Create new draft</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for confirmation dialog -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <p id="confirmationMessage"></p>
+            <button id="confirmYes">Yes</button>
+            <button id="confirmNo">No</button>
+        </div>
+    </div>
+    <style>
+        .modal /* Styles for the modal container */
+        {
+            display: none; /* Initially hide the modal */
+            position: fixed; /* Fixed position so it stays in place regardless of scrolling */
+            z-index: 1; /* Ensure modal is on top of other content */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width of the viewport */
+            height: 100%; /* Full height of the viewport */
+            overflow: auto; /* Enable scrolling if content exceeds viewport */
+            background-color: rgb(0,0,0); /* Fallback color for older browsers */
+            background-color: rgba(0,0,0,0.4); /* Transparent black overlay */
+        }
+
+        .modal-content /* Styles for the modal content */
+        {
+            background-color: #fefefe; /* White background for the modal content */
+            margin: 20% auto; /* Center the modal vertically & horizontally */
+            padding: 30px; /* Padding inside the modal content */
+            border: 1px solid #4d388b; 
+            width: 30%; 
+            text-align: center; 
+        }
+
+        #confirmYes, #confirmNo /* Styles for 'Yes' and 'No' buttons */
+        {
+            margin-top: 10px; /* Add some space above the buttons */
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Main Home</title>
+
+  <!-- Add a favicon for the website to avoid 404 error message -->
+  <link rel="shortcut icon" href="#">
+
+  <!-- Loading CSS -->
+  <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+ <body>
+  <!-- ----------------------------------navbar------------------------------------------ -->
+  <nav class="navbar">
+    <h1>Blogging Tool</h1>
+    <!-- ----------navbar Links----------- -->
+    <ul>
+      <li class="active">Home</li>
+      <li><a href="/author">Author Home Page</a></li>
+      <li><a href="/reader">Reader Home Page</a></li>
+    </ul>
+    <!-- ----------------------------------Blog------------------------------------------ -->   
+    <% if (user && user.user_name !== 'Guest') { %>
+      <div class="welcome-message">
+        Welcome, <%= user.user_name %>! <a href="/auth/logout">Logout</a>
+      </div>
+    <% } else { %>
+      <div class="welcome-message">
+        Welcome, Guest! <a href="/auth/login">Login</a>
+      </div>
+    <% } %>
+  </nav>
+  <div class="main-blog-articles">
+    <div class="blog-articles">
+      <h4>Welcome</h4>
+      <p>to the Blogging Tool</p>
+    </div>
+  </div>
+ </body>
+</html>

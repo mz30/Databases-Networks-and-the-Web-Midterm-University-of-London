@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+
+  <!-- Add a favicon for the website to avoid 404 error message -->
+  <link rel="shortcut icon" href="#">
+
+  <!-- Loading CSS -->
+  <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+<body>
+  <!-- ----------------------------------navbar------------------------------------------ -->
+  <nav class="navbar">
+    <h1>Settings Page</h1>
+    <!-- ----------navbar Links----------- -->
+    <ul>
+      <li><a href="/author">Back to Author Home</a></li>
+      <li><a href="/auth/logout">Logout</a></li> 
+    </ul>
+  </nav>
+  <!-- ----------------------------------Blog------------------------------------------ -->   
+  <div class="blog-section">
+    <form action="/settings" method="post">
+      <label>Blog Title:</label>
+      <input type="text" name="blog_title" value="<%= settings.blog_title %>">
+      <label>Author Name:</label>
+      <input type="text" name="author_name" value="<%= settings.author_name %>">
+      <button type="submit">Save Settings</button>
+    </form>
+  </div>
+</body>
+</html>

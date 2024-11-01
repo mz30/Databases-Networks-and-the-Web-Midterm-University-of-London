@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= article.title %></title>
+
+  <!-- Add a favicon for the website to avoid 404 error message -->
+  <link rel="shortcut icon" href="#">
+
+  <!-- Loading CSS -->
+  <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+<body>
+  <!-- ----------------------------------navbar------------------------------------------ -->
+  <nav class="navbar">
+    <h1><%= article.title %></h1>
+    <!-- ----------navbar Links----------- -->
+    <ul>
+      <li><a href="/reader">Back to Reader Home</a></li>
+      <li><a href="/author">Back to Author Home</a></li>
+    </ul>
+  </nav>
+  <!-- ----------------------------------Blog------------------------------------------ -->    
+  <div class="blog-section">
+    <div class="article-container">
+      <h5><%= article.title %></h5>
+      <% if (article.showAuthorName) { %>
+        <p>By <%= article.author %></p>
+      <% } %>
+      <p class="p-article"><%= article.content %></p>
+      <hr>
+      <p class="article-info">Published on: <%= moment.utc(article.published_at).tz('Asia/Karachi').format('YYYY-MM-DD HH:mm:ss') %> PKT</p>
+      <p class="article-info">Views: <%= article.views %> | Likes: <%= likeCount %></p>
+      <% if (likeMessage) { %>
+        <p class="like-message"><%= likeMessage %></p>
+      <% } %>
+      <form action="/reader/article/<%= article.article_id %>/like" method="post">
+        <button type="submit">Like 👍</button>
+      </form>
+      <form action="/reader/article/<%= article.article_id %>/comment" method="post">
+        <label>Name:</label>
+        <input type="text" name="commenter_name" required>
+        <label>Comment:</label>
+        <textarea name="comment" required></textarea>
+        <button type="submit">Add Comment</button>
+      </form>
+      <ul>
+        <% comments.forEach(comment => { %>
+          <li>
+            <strong><%= comment.commenter_name %>:</strong> <%= comment.comment %> - <%= moment.utc(comment.created_at).tz('Asia/Karachi').format('YYYY-MM-DD HH:mm:ss') %> PKT
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

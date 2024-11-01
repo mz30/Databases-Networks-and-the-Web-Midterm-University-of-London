@@ -1,0 +1,373 @@
+/*
+  Note: for styling, I have reused most contents from my Final Assignment of previous module 
+  named CM1040 Web Development
+  Another thing to note is <h1>, <h2> and so on might look disordered in ejs templates & it is
+  because I have used them in order in CSS instead
+*/
+
+/* ==========================================================================
+   - Global (like body, navbar, default settings etc) CSS style for all pages 
+   ========================================================================== */
+
+body, html 
+{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  overflow-x: hidden; /*to prevent any possible horizontal scroll bar*/
+  background-color: lightcyan; 
+  position: relative; /*stay Relative to its positon*/
+}
+
+/* Making & Adjusting default settings-----------------------------------------------------*/
+
+/* Paragraphs */  
+p 
+{
+  padding: 0px; /* Remove default padding & margin */
+  margin: 0;
+}
+
+/* Links */  
+li
+{
+  list-style: none; /* Removes default dot on links*/
+}
+
+li a:hover /*when mouse is dragged on the link*/
+{
+  color: red; 
+  text-decoration: underline;
+} 
+  
+a
+{
+  text-decoration: none; /* Removes default underline on links*/
+  color: blue;
+}
+
+a:hover /*when mouse is dragged on the link*/
+{
+  color: red; 
+  text-decoration: underline; 
+}
+
+/* Button */  
+button
+{
+  font-weight: bolder; /*weight of texts on buttons*/
+  background-color: white; /*BG color of buttons*/
+  color: #3db8c0; /*color of texts on buttons*/
+  border: 1px solid #4d388b; /*border size & color*/
+  cursor: pointer; /*To make buttons look clickable*/   
+}
+
+button:hover /*when mouse is dragged on the button*/
+{
+  background-color: rgb(221, 221, 221); /*BG color of buttons*/
+}
+
+button:active /*when mouse is clicked on the button*/
+{
+  background-color: #ffe7c2; /*BG color of buttons*/
+}
+
+/* NAVBAR------------------------------------------------------------------*/  
+.navbar 
+{
+  position: fixed; /*sticky navbar*/
+  z-index: 9999; /*To make the navbar always appear first*/
+  top: 0; 
+  width: 100%; 
+  background-color: #3db8c0;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 5px 4px 20px grey; /* shadow effect from below*/
+}
+
+h1
+{
+  margin: 0; 
+  font-size: 36px; 
+  color: white; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* shadow effect to the text */
+  transition: color 0.3s ease; /* smooth transition effect to the text color on mouse drag*/
+}
+
+h1:hover 
+{
+  color: #ff9900; /* Changes the text color when mouse is dragged over h1*/
+}
+ 
+/* NAVBAR links */
+nav ul li 
+{
+  display: inline; /*Horizontal display of text*/
+  margin-right: 20px; /*Space between links*/
+}
+
+nav ul li a 
+{
+  color: white; /*Non-active links color*/
+  font-size: 20px; /*Non-active links size*/
+  transition: color 0.3s ease;
+  display: inline-block; /* Ensure links are displayed */
+}
+    
+nav ul li a:hover /*when mouse is dragged over links*/
+{
+  color: #ff9900; /* Changes the text color of the navbar links from blue */
+  text-decoration: none; /*remove default underline decoration*/
+  font-weight: bolder; /*Make text bolder*/
+}
+
+nav ul li.active /*active links size & weight*/
+{
+  color: white; 
+  font-size: 25px;
+  font-weight: bolder; 
+}
+
+/* ==========================================================================
+   - articlePage.ejs CSS style
+   ========================================================================== */
+
+.p-article /*article blog content*/
+{
+  font-weight: bolder; 
+  font-size: 20px;
+  color: rgb(43, 0, 160);
+  line-height: 1.4;
+}
+
+.article-info /*when was article published, how many likes & views it have*/
+{
+  font-size: 20px;
+  font-weight: bolder;
+  color: #000000;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   - authorHome.ejs CSS style
+   ========================================================================== */
+
+.published-articles, .draft-articles /* 2 contents (published, draft)*/
+{
+  border: 1px solid #4d388b; /*border size & color*/
+  border-radius: 10px; /*rounded corners of border*/ 
+  margin: 3% 5% auto; /*3% sets the top margin, 5% sets the right & left margins, & auto sets the bottom margin*/
+  padding: 10px; /* Optional: Add some spacing between articles */
+}
+
+.line-between-publish-and-draft /*vertical line separating 2 articles content*/
+{
+  border-left: 1px solid #007e92;
+}
+
+/*Display a message if publish button is clicked with empty title and/or content*/
+.blog-articles .publish-message 
+{
+  font-weight: normal;
+  color: #000;
+  margin-right: 25%;
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   - editArticle.ejs CSS style
+   ========================================================================== */
+
+.editArticle-field /*text fields & save button*/ 
+{
+  position: relative;
+  width: 10%;
+  display: grid;
+  grid-gap: 5px; /*Vertical gap*/
+  text-align: left;
+  color: #000;
+}
+
+/* ==========================================================================
+   - login.ejs CSS style
+   - register.ejs CSS style
+   ========================================================================== */
+
+.login-form
+{
+  position: relative;
+  margin: 13% 30% 1% 41%; /* To adjust it in center */
+  width: 10%;
+  display: grid;
+  grid-gap: 10px; /*Vertical gap*/
+  text-align: center;
+  padding: 70px;
+  color: #000;
+  border: 1px solid #4d388b; /*border size & color*/
+  border-radius: 8px; /*rounded corners*/ 
+}
+
+.login-form button, .register-form button
+{
+  font-weight: bolder; 
+  background-color: #3db8c0; 
+  color: white; 
+  border: none; 
+  cursor: pointer;   
+  width: 80%; /*width size*/
+  font-size: 100%;
+  padding: 10px 10px; /*overall size*/
+  margin: 8px 0; /*a top & bottom margin of 8px, a left & right margin of 0 */
+  border: none; /*remove default border*/
+  border-radius: 10px; /*corner roundness*/
+}
+
+/* Styles for the submit button when mouse is dragged over it*/
+.login-form button:hover, .register-form button:hover 
+{
+  background-color: rgb(1, 98, 113); /*buttons BG color*/
+}
+
+/* Styles for the submit button when clicked */
+.login-form button:active, .register-form button:active
+{
+  background-color: #ff9900; /*buttons BG color*/
+} 
+
+h2 /*register title*/
+{
+  color: #007e92;
+  font-size: 20px; 
+  margin-top: 0;
+}
+
+.register-form 
+{
+  position: relative;
+  margin: 11% 30% 1% 43%; /* To adjust it in center */
+  width: 10%;
+  display: grid;
+  grid-gap: 10px; /*Vertical gap*/
+  text-align: center;
+  padding: 50px;
+  color: #000;
+  border: 1px solid #4d388b; /*border size & color*/
+  border-radius: 8px; /*rounded corners*/ 
+}
+
+#loginError-text, #registerError-text 
+{
+  width: 80%; /*border width*/
+  margin: 20px auto 0; /*a top margin of 20px, horizontally center it & has a bottom margin of 0 */
+  font-weight: bolder; /*text weight & color*/
+  color: red;
+  border: 1px solid #4d388b; /*border size & color*/
+  border-radius: 10px; /*rounded corners of border*/ 
+  padding: 10px 10px; /*overall space added for text*/
+}
+
+/* ==========================================================================
+   - readerHome.ejs CSS style
+   ========================================================================== */
+
+h3 /*titles of every published articles in article-item*/
+{
+  font-size: 20px; 
+  margin-bottom: 10px; 
+}
+
+.article-item /*Display list of articles if published*/
+{
+  display: inline-grid;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  position: relative;
+  margin: 13% auto auto 0.3%; /*13% sets the top margin, auto sets the right & bottom margins & 0.3% sets the left margin.*/
+  border: 1px solid #4d388b; /*border size & color*/
+  border-radius: 10px; /*rounded corners of border*/ 
+  padding: 5px;
+}
+
+.no-article-item /*otherwise display a message saying No articles to display */
+{
+  position: relative;
+  top: 100%; /* position 100% below its original position */
+  margin: 13% auto auto 3%; /*13% sets the top margin, auto sets the right & bottom margins, & 3% sets the left margin*/
+}
+
+/* ==========================================================================
+   - authorHome.ejs CSS style
+   - mainHome.ejs CSS style
+   ========================================================================== */
+
+/*display welcome message in mainHome & article (published, draft) contents in authorHome in columns*/   
+.main-blog-articles 
+{
+  display: grid;
+  grid-auto-flow: column; 
+  margin-top: 200px; 
+}
+
+/*Overall space for welcome message in mainHome & article (published, draft) contents in authorHome */   
+.blog-articles
+{
+  padding: 8px 32px 8px 32px; /*to adjust it in center*/
+  
+}
+
+h4 /*title for welcome message in mainHome & article (published, draft) in authorHome */
+{
+  font-size: 32px; 
+  text-align: center; 
+  font-weight: bolder; 
+  color: rgb(127, 85, 243); 
+  margin: 0px;
+}
+
+.blog-articles p /*p below welcome message in mainHome &, in publish & draft article contents in authorHome*/
+{
+  font-weight: bolder; 
+  font-size: 20px; 
+  color: rgb(127, 85, 243); 
+  margin: 0; 
+  text-align: center;
+}
+
+/* ==========================================================================
+  - articlePage.ejs CSS style
+  - editArticle.ejs CSS style
+  ========================================================================== */
+
+.article-container /*1 container in articlePage & other in editArticle*/
+{
+  margin-bottom: 40px; 
+  padding: 20px; 
+  border: 1px solid #4d388b; 
+  border-radius: 8px;  
+  width: auto;
+}
+
+h5 /* 'Edit Article' title displayed in editArticle & display titles set by authors in articlePage */
+{
+  color: white; 
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+  background-color: rgb(0,126,146); 
+  padding: 5px; 
+  margin: -20px -20px 15px; 
+  border-radius: 8px 8px 0 0;
+}
+
+/* ==========================================================================
+   - articlePage.ejs CSS style
+   - editArticle.ejs CSS style
+   - settingPage.ejs CSS style
+   ========================================================================== */
+
+.blog-section /*main container for blog article read, edit & settings*/
+{
+  position: relative;
+  margin: 15% 12% 0 12%; 
+}
