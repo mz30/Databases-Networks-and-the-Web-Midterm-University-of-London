@@ -191,10 +191,6 @@ You should be able to ONLY run ```npm install```, ```npm run build-db```, and ``
 
 - **Author Home page**: Requires account creation. Authors can write articles, save drafts, publish or delete articles and drafts and manage their blog settings.
 
-## Note on the exposed API key
-
-I understand that the Google OAuth2 API key is visible. However, the person reviewing the assignment will need the .env file to run the app on their own computer. The OAuth2 key comes from a client that was made just for this app, so it’s okay and nothing to worry about.
-
 ## Link to Video
 
 https://youtu.be/u6V39CHcYAQ
